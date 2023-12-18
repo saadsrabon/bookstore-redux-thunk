@@ -1,0 +1,5 @@
+export const ADDEDBOOK = 'BOOK/ADDEDBOOK';
+export const DELETEDBOOK = 'BOOK/DELETEDBOOK';
+export const EDITEDBOOK = 'BOOK/EDITEDBOOK';
+export const ADDFEATURE = 'BOOK/ADDFEATURE';
+
