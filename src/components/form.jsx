@@ -1,14 +1,35 @@
-import React from 'react'
+import { useDispatch } from "react-redux"
+import { addedBook } from "../redux/feature/books/actionsCreator"
 
-const form = () => {
+
+
+const BookForm = () => {
+  const dispacth = useDispatch()
+  const handleForm = (e) => {
+
+    e.preventDefault()
+   
+    const book = {
+// get all the values from the form
+      bookname: e.target.bookname.value,
+      author: e.target.author.value,
+      thumbnail: e.target.thumbnail.value,
+      price: e.target.price.value,
+      rating: e.target.rating.value,
+      featured: e.target.featured.checked
+      
+    }
+    dispacth(addedBook(book))
+  }
+    
   return (
     <div>
     <div className="p-4 overflow-hidden bg-white shadow-cardShadow rounded-md">
       <h4 className="mb-8 text-xl font-bold text-center">Add New Book</h4>
-      <form className="book-form">
+      <form onSubmit={handleForm} className="book-form">
         <div className="space-y-2">
           <label htmlFor="name">Book Name</label>
-          <input required className="text-input" type="text" id="input-Bookname" name="name" />
+          <input required className="text-input" type="text" id="input-Bookname" name="bookname" />
         </div>
 
         <div className="space-y-2">
@@ -45,4 +66,4 @@ const form = () => {
   )
 }
 
-export default form
+export default BookForm

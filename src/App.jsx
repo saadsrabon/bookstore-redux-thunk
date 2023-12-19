@@ -1,8 +1,11 @@
 
+import { useSelector } from 'react-redux'
 import './App.css'
 import { Card } from './components/card'
+import BookForm from './components/form'
 
 function App() {
+  const books =useSelector(state=>state.books)
   
 
   return (
@@ -45,10 +48,12 @@ function App() {
         <div className="lws-bookContainer">
           {/* <!-- Card 1 --> */  }
           {/* Need to map through the books from server and pass it card component */}
-          <Card/>
+   {       books.map((book,index)=><Card book={book} key={index}/>)}
+          
         </div>
       </div>
-     
+     <BookForm/>
+     {/*  */}
     </div>
   </main>
     </>

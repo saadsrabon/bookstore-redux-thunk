@@ -1,6 +1,8 @@
 import { ADDEDBOOK } from "./actionType";
 
-const initialState = {}
+const initialState = {
+    books:[]
+}
 
 const reducer = (state = initialState, action) => {
 
