@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux"
-import { addedBook } from "../redux/feature/books/actionsCreator"
+
+import { addbookThunk } from "../redux/feature/books/thunk/utility"
 
 
 
@@ -19,7 +20,7 @@ const BookForm = () => {
       featured: e.target.featured.checked
       
     }
-    dispacth(addedBook(book))
+    dispacth(addbookThunk(book))
   }
     
   return (

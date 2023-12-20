@@ -26,6 +26,15 @@
       "rating": 4,
       "featured": true,
       "id": 4
+    },
+    {
+      "bookname": "Computer Programming for Beginners",
+      "author": "Murali Chemuturi",
+      "thumbnail": "https://images.routledge.com/common/jackets/crclarge/978113832/9781138320482.jpg",
+      "price": "100",
+      "rating": "5",
+      "featured": false,
+      "id": 5
     }
   ]
 }
