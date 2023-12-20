@@ -1,12 +1,18 @@
 
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import './App.css'
 import { Card } from './components/card'
 import BookForm from './components/form'
+import { useEffect } from 'react'
+
+import fetchbooks from './redux/feature/books/thunk/utility'
 
 function App() {
   const books =useSelector(state=>state.books)
-  
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchbooks)
+  }, [dispatch])
 
   return (
     <>
