@@ -1,7 +1,7 @@
 {
   "books": [
     {
-      "bookname": "Slow Horses (Deluxe Edition)",
+      "name": "Slow Horses (Deluxe Edition)",
       "author": "Mick Herron",
       "thumbnail": "https://m.media-amazon.com/images/I/51Ga5GuElyL._SX331_BO1,204,203,200_.jpg",
       "price": 14,
@@ -10,7 +10,7 @@
       "id": 1
     },
     {
-      "bookname": "The Last Thing He Told Me: A Novel",
+      "name": "The Last Thing He Told Me: A Novel",
       "author": "Laura Dave",
       "thumbnail": "https://m.media-amazon.com/images/P/1501171348.01._SCLZZZZZZZ_SX500_.jpg",
       "price": 13.99,
@@ -19,7 +19,7 @@
       "id": 2
     },
     {
-      "bookname": "Eloquent JavaScript, 3rd Edition",
+      "name": "Eloquent JavaScript, 3rd Edition",
       "author": "Marijn Haverbeke",
       "thumbnail": "https://m.media-amazon.com/images/I/51InjRPaF7L._SX377_BO1,204,203,200_.jpg",
       "price": 23.99,

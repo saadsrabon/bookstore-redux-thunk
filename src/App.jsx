@@ -30,15 +30,14 @@ console.log(search)
     }
   }
   
-  // handle Featured Books
-  const handleFeatured = (book) => {
-    const { featured } = book
-    if (featured === featureds) {
+  const handleFeature =(book)=>{
+     if(!featureds){
       return book
-    } else {
-      return book
-    }
+     }else{
+      return book.featured?book.featured: ""
+     }
   }
+  
   return (
     <>
        <nav className="py-4 2xl:px-6">
@@ -81,7 +80,7 @@ console.log(search)
           {/* Need to map through the books from server and pass it card component */}
    {       books
           .filter(filterBySearch)
-          .filter(book=> book.featured === featureds)
+          .filter(handleFeature)
       
           .map((book,index)=><Card book={book} key={index}/>)}
           
