@@ -3,18 +3,42 @@ import { useDispatch, useSelector } from 'react-redux'
 import './App.css'
 import { Card } from './components/card'
 import BookForm from './components/form'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { fetchbooks } from './redux/feature/books/thunk/utility'
 
 
 
 function App() {
+  // Search state
+  const [search, setSearch] = useState('')
+  const [featureds, setFeatured] = useState(false)
   const books =useSelector(state=>state.books)
   const dispatch = useDispatch()
+  // 
+  console.log(featureds)
   useEffect(() => {
     dispatch(fetchbooks)
   }, [dispatch])
-
+console.log(search)
+  // Handle search
+  const filterBySearch = (book) => {
+  
+    if (search === '') {
+      return book
+    } else if (book?.bookname.toLowerCase().includes(search.toLowerCase())) {
+      return book
+    }
+  }
+  
+  // handle Featured Books
+  const handleFeatured = (book) => {
+    const { featured } = book
+    if (featured === featureds) {
+      return book
+    } else {
+      return book
+    }
+  }
   return (
     <>
        <nav className="py-4 2xl:px-6">
@@ -35,7 +59,7 @@ function App() {
               d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z">
             </path>
           </svg>
-          <input type="text" placeholder="Filter books..." className="search" id="lws-searchBook" />
+          <input onChange={(e)=>setSearch(e.target.value)} type="text" placeholder="Filter books..." className="search" id="lws-searchBook" />
         </div>
       </form>
     </div>
@@ -48,14 +72,18 @@ function App() {
           <h4 className="mt-2 text-xl font-bold">Book List</h4>
 
           <div className="flex items-center space-x-4">
-            <button className="filter-btn active-filter" id="lws-filterAll">All</button>
-            <button className="filter-btn" id="lws-filterFeatured">Featured</button>
+            <button onClick={()=>{setFeatured(false)}} className="filter-btn active-filter" id="lws-filterAll">All</button>
+            <button onClick={()=>{setFeatured(true)}} className="filter-btn" id="lws-filterFeatured">Featured</button>
           </div>
         </div>
         <div className="lws-bookContainer">
           {/* <!-- Card 1 --> */  }
           {/* Need to map through the books from server and pass it card component */}
-   {       books.map((book,index)=><Card book={book} key={index}/>)}
+   {       books
+          .filter(filterBySearch)
+          .filter(book=> book.featured === featureds)
+      
+          .map((book,index)=><Card book={book} key={index}/>)}
           
         </div>
       </div>
